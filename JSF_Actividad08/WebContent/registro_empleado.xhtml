@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
+	
+	<ui:define name="content">
+	    
+	    <h:form id="myForm">
+	    	<h:panelGrid columns="2">
+	    		<h:outputText value="Nombre"></h:outputText>
+	    		<h:inputText value="#{empleadoManagedBean.empleado.nombre}">
+	    			</h:inputText>
+	    			
+	    		<h:outputText value="DNI"></h:outputText>
+	    		<h:inputText value="#{empleadoManagedBean.empleado.dni}" >
+	    			<f:validateLength minimum="8" maximum="8"></f:validateLength>
+	    			
+	    			</h:inputText>	
+	    			
+	    		<h:outputText value="Fecha Ingreso"></h:outputText>
+	    		<h:inputText value="#{empleadoManagedBean.empleado.fechaIngreso}">
+	    			<f:convertDateTime pattern="dd/MM/yyyy"></f:convertDateTime>
+	    			</h:inputText>	
+	    			
+	    		<h:outputText value="Departamento"></h:outputText>
+	    		<h:selectOneMenu 
+	    			value="#{empleadoManagedBean.empleado.departamento.id}">
+	    			<f:selectItem itemLabel="Lima" itemValue="1"></f:selectItem>
+	    			<f:selectItem itemLabel="Ica" itemValue="2"></f:selectItem>
+	    		</h:selectOneMenu>	
+	    	
+		    </h:panelGrid>   
+		    	<h:commandButton value="Guardar" actionListener="#{empleadoManagedBean.guardar}">
+		    					</h:commandButton>
+		    					
+		    	<h:commandButton value="Guardar y Enviar" 
+		    		action="#{empleadoManagedBean.guardarYEnviar}">
+		    	</h:commandButton>
+	    
+	    </h:form>
+	</ui:define>
+	
+</ui:composition>
+</html>
